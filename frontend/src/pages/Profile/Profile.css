@@ -1,0 +1,204 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+.profile-outer-container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(22, 19, 49);
+    color: white;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    height: 80%;
+    
+    border-radius: 8px;
+   
+    font-family: Arial, sans-serif; /* Add a default font */
+}
+
+.profile-details1{
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #030318;
+    border-radius: 20px;
+    padding: 5px;
+    height: 100%;
+    gap: 20px;
+}
+.headings{
+    font-size: 12px;
+    color: #39e803;
+    
+}
+.delete-icon{
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+    margin: 10px;
+    text-align: center;
+}
+.username-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.profile-details{
+    flex: 3;
+    background-color: #030318;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: column;
+    gap:  20px;
+    border-radius: 20px;
+
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #bcbaba;
+    gap: 40px;
+   height: 60%;
+    
+}
+
+.profile-img1 img {
+    width: 90px;
+    height:90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+
+
+.profile-details p {
+    font-size: 1rem;
+    color: #a8a8a6;
+    margin: 5px 0 0; /* Add margin for better spacing */
+}
+
+.profile-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.semester-info{
+    width: 100%;
+    display: flex;
+    
+    justify-content: space-between;
+}
+
+.followers-info {
+    display: flex;
+    
+    justify-content: space-between;
+    gap: 10px;
+    
+}
+
+.followers-count,
+.following-count {
+    font-size: 16px;
+     /* Ensure they take equal space */
+    text-align: center; /* Center text for a balanced layout */
+}
+
+.uploaded-notes-section {
+   
+    padding: 15px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #030318 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    
+     /* Subtle shadow for depth */
+}
+
+.uploaded-notes-section h2 {
+    margin-top: 0; /* Remove top margin for the section title */
+}
+
+.uploaded-notes-section ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+/* Scrollbar container */
+.scroll-container {
+    width: 100%; /* Adjust the width */
+    height: 200px; /* Set the height */
+    overflow: auto; /* Enable scrolling */
+}
+
+/* Track */
+.uploaded-notes-section ul::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+/* Handle */
+.uploaded-notes-section ul::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Round the edges */
+}
+
+/* Handle on hover */
+.uploaded-notes-section ul::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color when hovering */
+}
+
+/* Optional: Vertical scrollbar */
+.uploaded-notes-section ul::-webkit-scrollbar:vertical {
+    background: transparent; /* Vertical track color */
+}
+
+/* Optional: Horizontal scrollbar */
+.uploaded-notes-section ul::-webkit-scrollbar:horizontal {
+    height: 4px; /* Height of the horizontal scrollbar */
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+
+.uploaded-notes-section li {
+    margin-bottom: 10px;
+    padding: 20px; /* Add padding for better spacing */
+    text-align: justify;
+    background: #141922; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-radius: 10px;/* Add a bottom border for separation */
+}
+
+

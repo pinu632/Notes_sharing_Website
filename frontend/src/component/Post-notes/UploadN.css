@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+
+.upload-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    font-family: "Afacad Flux", sans-serif;
+    
+    color: rgb(131, 129, 129);
+}
+.upload-main h1{
+    color: green;
+}
+.upload-main form{
+    display: flex;
+    flex-direction: column;
+    
+    gap: 7px;
+}
+
+.upload-main input {
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #00000057;
+    color: rgb(112, 112, 110);
+    font-family: "Afacad Flux", sans-serif;
+}
+.upload-main textarea{
+    resize: none;
+    width: 100%;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    background: #00000057;
+    color: white;
+    font-family: "Afacad Flux", sans-serif;
+
+}
+.center-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.center-content select{
+    width: 100%;
+    background: #00000057;
+}
+.visibility{
+    background: #00000057;
+}
+.upload-main button{
+    width: 300px;
+    align-self: center;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+    background: transparent;
+    border: 2px solid green;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Afacad Flux", sans-serif;
+}
+.upload-main label{
+    width: 200px;
+    font-size: 16px;
+    color: rgb(112, 112, 110);
+}
+
+    
+input[type="file"]::-webkit-file-upload-button{
+    background: transparent;
+    border: none;
+    color: rgb(128, 126, 126);
+}

@@ -1,0 +1,35 @@
+.follow-outer{
+    padding: 30px;
+    background-color: #000003d9;
+    width: 90%;
+    overflow: scroll;
+    border-radius: 20px;
+
+
+}
+.follow-outer::-webkit-scrollbar{
+    display: none;
+}
+.follow-wrap{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    color: white;
+    font-size: 15px;
+    font-family: "Afacad Flux", sans-serif;
+    gap: 10px;
+    margin: 20px;
+    
+
+}
+.follow-wrap button{
+    font-family: "Afacad Flux", sans-serif;
+    width: 100px;
+    padding: 6px;
+    font-size: 16px;
+    background: transparent;
+    border-radius: 10px;
+    border: 2px solid green;
+    color: white;
+    cursor: pointer;
+}

@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    
+  }
+  
+  body {
+    overflow-x: hidden; /* Prevents overflow at the body level */
+  }
+  
+  .outer-container {
+    width: 100%;
+    background-color: rgb(0 0 0 / 28%);
+    padding: 5px;
+    color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow-x: hidden; /* Ensures no horizontal overflow */
+    display: flex;
+    flex-direction: column;
+    font-family: "Afacad Flux", sans-serif;
+  }
+  
+  .auth-img {
+    height: 35px;
+    width: 35px;
+    background-color: aqua;
+    border-radius: 50%;
+  }
+  
+  .author {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .main-post {
+    display: flex;
+    width: 100%; /* Ensures flex container doesn't overflow */
+  }
+  
+  .thumbnail {
+    flex: 1;
+   
+    max-width: 100%; /* Prevents thumbnail from overflowing */
+  }
+  
+  .description {
+    flex: 2;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 100%; 
+    /* Prevents description from overflowing */
+  }
+  
+  .post-description {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tag-internal {
+    padding: 10px;
+    background-color: rgb(13 31 53 / 57%);
+    text-align: center;
+  }
+  
+  .tags {
+    display: flex;
+    gap: 5px;
+    max-width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden; /* Ensures tags don't overflow */
+  }
+  .tags::-webkit-scrollbar{
+    display: none;
+  }
+  .post-footer{
+    padding: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .post-footer button{
+    padding: 10px;
+    font-size: 13px;
+    color: white;
+    font-weight: 400;
+    background: rgb(13 31 53 / 57%);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .pdf-viewer{
+    height: 100%;
+    overflow: hidden;
+    border: none;
+    background: #6ae116;
+  }
+  iframe::-webkit-scrollbar{
+    display: none;
+  }
+  
+ 
+  .follow{
+    color: #6ae116;
+    cursor: pointer;
+  }
+  
+  .posticons{
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .thumbnail img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .auth-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+  }
+  .author h4:hover{
+  cursor: pointer;
+  }
+  .post-title:hover{
+ cursor: pointer;
+  }
+  .username{
+    color: #606060;
+  }
+  .cursor-none{
+    cursor: auto;
+  }

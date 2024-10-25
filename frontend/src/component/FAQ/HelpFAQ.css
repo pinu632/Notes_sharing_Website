@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+
+.help-faq-container {
+    padding: 20px;
+    background-color: rgb(0 0 0 / 28%);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Afacad Flux", sans-serif;
+    color: rgba(202, 202, 202, 0.759);
+}
+
+.faq-list {
+    margin-top: 20px;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+   
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    color: white;
+    background-color: #000003d9;
+    transition: background-color 0.1s;
+}
+
+.faq-question:hover {
+    background-color: #4c4b4b;
+}
+
+.faq-answer {
+    padding: 15px;
+    background-color: #726f6f;
+}

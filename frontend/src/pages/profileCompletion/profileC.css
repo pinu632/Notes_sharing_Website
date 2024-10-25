@@ -1,0 +1,211 @@
+/* Container for the entire form */
+.container {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+/* Form Group */
+.form-group-c {
+  background-color: #0056b3;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  height: 20px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: #4caf50;
+  height: 100%;
+  width: 0;
+  border-radius: 25px;
+  transition: width 0.4s ease;
+}
+
+/* Steps Indicator */
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  color: #999;
+  position: relative;
+}
+
+.step.active {
+  font-weight: bold;
+  color: #333;
+}
+
+.step:before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  transition: background-color 0.4s ease;
+}
+
+.step.active:before {
+  background-color: #4caf50;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #e0e0e0;
+  top: 14px;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(50%);
+}
+
+.step.active:not(:last-child)::after {
+  background-color: #4caf50;
+}
+
+/* Form Input and Select Styling */
+.step-content input[type="text"],
+.step-content input[type="email"],
+.step-content input[type="file"],
+.step-content input[type="date"],
+.step-content input[type="number"],
+.step-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #393939;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* Ensures padding and borders are included in width */
+}
+
+/* Button Styling */
+.step-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.step-content button:hover {
+  background-color: #45a049;
+}
+
+/* Navigation Buttons */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.navigation button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navigation button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.navigation button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .step {
+      font-size: 10px;
+  }
+
+  .navigation button {
+      font-size: 14px;
+  }
+}
+
+/* Select Styling */
+select {
+  -webkit-appearance: none; /* Removes default browser styling for consistent appearance */
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%; /* Ensure consistent width with input fields */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #393939;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  color: rgb(97, 96, 96);
+  box-sizing: border-box; /* Ensures padding and borders are included in width */
+}
+
+label {
+  color: rgb(97, 96, 96);
+}
+
+/* Profile Picture */
+.profilepic {
+  height: 150px;
+  width: 150px;
+  border: 2px solid gray;
+  margin: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Large Container */
+.large-container {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg,#49ecc8, #e780d4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gender{
+  width: 90%;
+}

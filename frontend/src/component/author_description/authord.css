@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+.profileImg img{
+    height: 225px;
+    width: 225px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.author-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-family: "Afacad Flux", sans-serif;
+    color: white;
+    
+}
+.bio{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    align-items: center;
+}
+.center{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    align-items: center;
+}
+.center1{
+    display: flex;
+    
+   
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

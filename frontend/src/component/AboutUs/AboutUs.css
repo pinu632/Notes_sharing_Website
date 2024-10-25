@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+.aboutus-container {
+    padding: 20px;
+    background-color: rgb(0 0 0 / 28%);
+ 
+    font-family: "Afacad Flux", sans-serif;
+  }
+  
+  .aboutus-header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .aboutus-section {
+    margin-bottom: 30px;
+  }
+  
+  .aboutus-section h2 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .aboutus-section p {
+    font-size: 1.1em;
+    color: #5a5a5a;
+    line-height: 1.6;
+  }
+  
+  .aboutus-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .aboutus-section ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #6c757d;
+  }
+  
