@@ -3,6 +3,7 @@ import './Auth.css';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import Spinner from '../../component/LoaderSpinner/LoaderSpinner';
+import config from '../../../config';
 
 
 
@@ -18,7 +19,7 @@ export function LogIn({onToggle}){
     const { mutate, isLoading, isPending, error } = useMutation({
 		mutationFn: async ({  username, password }) => {
 			try {
-				const res = await fetch("http://localhost:8000/api/auth/signin", {
+				const res = await fetch(`${config.baseUrl}/api/auth/signin`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

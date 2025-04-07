@@ -81,7 +81,7 @@ const userSchema = new mongoose.Schema({
         default:""
     },course:{
         type:String,
-        required:true
+        
     },
     savedNotes:[{
         type:mongoose.Schema.Types.ObjectId,

@@ -5,6 +5,7 @@ import { QueryClient, useQuery } from '@tanstack/react-query';
 import { useEffect, useState,useMemo } from 'react';
 import axios from 'axios';
 const queryClient = new QueryClient();
+import config from '../../config';
 import io, { Socket } from 'socket.io-client';
 import { set } from 'mongoose';
 
@@ -35,7 +36,7 @@ export const Post = ({ ref,note, auhorDescription, suggestedNotes,setIsclicked }
     // Fetch the user data based on the note's userId
     const getUser = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/api/user/getUser/${note.userId}`, {
+            const res = await axios.get(`${config.baseUrl}/api/user/getUser/${note.userId}`, {
                 withCredentials: true
             });
 
@@ -69,8 +70,28 @@ export const Post = ({ ref,note, auhorDescription, suggestedNotes,setIsclicked }
 })
 
     const handleFollowClick = () => {
-        
+        AuthorId
         socket.emit('followAuthor', authUser?.user?._id, user?.user?._id);
+        // Client-side code
+     socket.emit('toggleFollow',authUser?.user?._id ,user?.user?._id , (response) => {
+    if (response.success) {
+      console.log(response.message);
+      const followButton = document.getElementById('followButton');
+  
+      // Update the button text and style based on the follow/unfollow state
+      if (response.following) {
+        followButton.textContent = 'Unfollow';
+        followButton.classList.add('following');
+      } else {
+        followButton.textContent = 'Follow';
+        followButton.classList.remove('following');
+      }
+    } else {
+      console.error(response.message);
+      // Optionally show an error message to the user in the UI
+    }
+  });
+  
         setIsclicked(true);
       };
 
@@ -126,7 +147,7 @@ export const Post = ({ ref,note, auhorDescription, suggestedNotes,setIsclicked }
                 </div>
                 <h4 onClick={() => auhorDescription(user)}>{note.Author}</h4>
                 <div className="username">@{user && user.user.username?user.user.username:"user not found"}</div>
-                <div className="follow" onClick={handleFollowClick}>{following?"following":"follow"}</div>
+                <div className="follow" id='follow' onClick={handleFollowClick}>{following?"following":"follow"}</div>
             </div>
             <div className="main-post">
                 <div className="thumbnail">

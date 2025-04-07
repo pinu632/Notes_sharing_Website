@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import './profileC.css';
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import config from "../../../config.js";
 
 export function CompleteProfile() {
     const [currentStep, setCurrentStep] = useState(0);
@@ -21,7 +22,7 @@ export function CompleteProfile() {
     const { mutate, isError, isPending, error } = useMutation({
         mutationFn: async () => {
             try {
-                const res = await fetch("http://localhost:8000/api/profile/profileCompletion", {
+                const res = await fetch(`${config.baseUrl}/api/profile/profileCompletion`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

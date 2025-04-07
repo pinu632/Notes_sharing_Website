@@ -10,6 +10,7 @@ import { UnAuthenticatedDashboard } from './pages/Dashboard/unauthenticatedDashb
 import { useEffect } from 'react'
 import Spinner from './component/LoaderSpinner/LoaderSpinner.jsx'
 import { Profile } from './pages/Profile/Profile.jsx'
+import config from '../config.js'
 
 function App() {
    const navigate = useNavigate();
@@ -18,7 +19,7 @@ function App() {
     queryFn: async ()=>{
       try {
 
-         const res = await fetch('http://localhost:8000/api/auth/me',{
+         const res = await fetch(`${config.baseUrl}/api/auth/me`,{
           method:'GET',
           credentials:'include',
           headers: {

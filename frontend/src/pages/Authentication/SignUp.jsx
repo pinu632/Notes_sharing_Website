@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import toast from "react-hot-toast"
 import Notification from '../../Notification/Notification.jsx';
+import config from '../../../config.js';	
 
 export function SignUp({onToggle}){
     const [formData,setFormData] = useState({
@@ -19,7 +20,7 @@ export function SignUp({onToggle}){
 	const { mutate, isError, isPending, error } = useMutation({
 		mutationFn: async ({ email, username, fullname, password ,confirmPassword}) => {
 			try {
-				const res = await fetch("http://localhost:8000/api/auth/signup", {
+				const res = await fetch(`${config.baseUrl}/api/auth/signup`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",

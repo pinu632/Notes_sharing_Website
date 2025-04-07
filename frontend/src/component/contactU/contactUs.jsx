@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './ContactUs.css';
+import config from '../../../config';
 
 export const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ export const ContactUs = () => {
         // Replace this with actual token
 
         const response = await axios.post(
-          'http://localhost:8000/api/user/feedback',
+          `${config.baseUrl}/api/user/feedback`,
           formData,
           {
             headers: {

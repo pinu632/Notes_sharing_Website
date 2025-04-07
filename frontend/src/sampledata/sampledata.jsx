@@ -447,6 +447,23 @@ const notes = [
         "Entrepreneurship",
         "Leadership and Change Management"
       ]
+    },
+    {
+      course:'BCA',
+      subjects: [
+        "Mathematics",
+        "Java",
+        "Python",
+        "Software Engineering",
+        "Computer Networks",
+        "Data Structure",
+        "Cloud Computing",
+        "Advanced java",
+        "Cyber law",
+        "Fundamental of Statistics",
+        "Fundamental of Computer and Information technology"
+
+      ]
     }
   ];
   

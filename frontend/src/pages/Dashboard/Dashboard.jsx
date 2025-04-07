@@ -1,4 +1,4 @@
-import'./Dashboard.css'
+import './Dashboard.css'
 import { IoSearchSharp } from "react-icons/io5";
 import { CiHome } from "react-icons/ci";
 import { SiBookstack } from "react-icons/si";
@@ -10,7 +10,7 @@ import { FcAbout } from "react-icons/fc";
 import { IoIosLogOut } from "react-icons/io";
 import { Post } from '../../component/PostComponent.jsx';
 import { IoCloudUploadOutline } from "react-icons/io5";
-import {authors} from '../../sampledata/sampledata.jsx'
+import { authors } from '../../sampledata/sampledata.jsx'
 import { useEffect, useRef, useState } from 'react';
 import { Author } from '../../component/author_description/Author-description.jsx';
 import { SuggestedNotes } from '../../component/SuggestedNotes/SuggestedNotes.jsx';
@@ -23,91 +23,92 @@ import { ContactUs } from '../../component/contactU/contactUs.jsx';
 import AboutUs from '../../component/AboutUs/Aboutus.jsx';
 import HelpFAQ from '../../component/FAQ/faq.jsx';
 import { useNavigate } from 'react-router-dom';
+import config from '../../../config.js';
 
 
 
-export function Dashboard(){
+export function Dashboard() {
 
     const firstPostref = useRef(null);
     const navigate = useNavigate();
-    
-    const [notes,setNotes] = useState([]);
-    const {data:authUser} = useQuery({queryKey:['authUser']});
-    const [isclicked,setIsclicked] = useState(false);
-    const [myNotes,setMyNotes] = useState([]);
+
+    const [notes, setNotes] = useState([]);
+    const { data: authUser } = useQuery({ queryKey: ['authUser'] });
+    const [isclicked, setIsclicked] = useState(false);
+    const [myNotes, setMyNotes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [searchTerms,setSearchTerms] = useState("");
-    const [filteredNotes,setFilteredNotes] = useState([]);
+    const [searchTerms, setSearchTerms] = useState("");
+    const [filteredNotes, setFilteredNotes] = useState([]);
 
 
-    const[selectedAuthor, setSelectedAuthor] = useState(null);
-    const[selectedOption,ssetSelectedOption] = useState(0);
-    const[selectedSubject,setSelectedSubject] = useState(null);
-    const[selectedContent,setSelectedContent] = useState(0);
+    const [selectedAuthor, setSelectedAuthor] = useState(null);
+    const [selectedOption, ssetSelectedOption] = useState(0);
+    const [selectedSubject, setSelectedSubject] = useState(null);
+    const [selectedContent, setSelectedContent] = useState(0);
 
-    const scrollToTop = ()=>{
-      if(firstPostref.current){
-       const topPos = firstPostref.current.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({
-      top: topPos,
-      behavior: "smooth"
-    });
-      }
+    const scrollToTop = () => {
+        if (firstPostref.current) {
+            const topPos = firstPostref.current.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top: topPos,
+                behavior: "smooth"
+            });
+        }
     }
 
-const handleSearch =(e) =>{
+    const handleSearch = (e) => {
         const keyword = e.target.value.toLowerCase();
         setSelectedContent(0);
         setSearchTerms(keyword);
 
-        const filtered = notes.filter(note => 
-            note.Title.toLowerCase().includes(keyword) || 
-            note.Description.toLowerCase().includes(keyword) || 
-            (note.Tags && note.Tags.some(tag => tag.toLowerCase().includes(keyword)))||
+        const filtered = notes.filter(note =>
+            note.Title.toLowerCase().includes(keyword) ||
+            note.Description.toLowerCase().includes(keyword) ||
+            (note.Tags && note.Tags.some(tag => tag.toLowerCase().includes(keyword))) ||
             note.Subject.toLowerCase().includes(keyword)
-          );
-          setFilteredNotes(filtered);
+        );
+        setFilteredNotes(filtered);
     }
-     console.log(filteredNotes);
+    console.log(filteredNotes);
     const displayedNotes = searchTerms ? filteredNotes : notes;
 
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const response = await axios.get('http://localhost:8000/api/user/uploadedNotes',{
-            withCredentials: true, // Ensures credentials like cookies are sent
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }); // API endpoint
-        setMyNotes(response.data); // Set the retrieved notes
-        setLoading(false);
-      } catch (err) {
-        setError("Unable to fetch notes");
-        setLoading(false);
-      }
-    };
-    fetchNotes();
-  }, []);
+    useEffect(() => {
+        const fetchNotes = async () => {
+            try {
+                const response = await axios.get(`${config.baseUrl}/api/user/uploadedNotes`, {
+                    withCredentials: true, // Ensures credentials like cookies are sent
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }); // API endpoint
+                setMyNotes(response.data); // Set the retrieved notes
+                setLoading(false);
+            } catch (err) {
+                setError("Unable to fetch notes");
+                setLoading(false);
+            }
+        };
+        fetchNotes();
+    }, []);
 
-    
-   
 
-    const Getnote = async () =>{
+
+
+    const Getnote = async () => {
         try {
-             
-            const res = await axios.get("http://localhost:8000/api/post/getNotes",{
+
+            const res = await axios.get(`${config.baseUrl}/api/post/getNotes`, {
                 withCredentials: true, // Ensures credentials like cookies are sent
                 headers: {
                     'Content-Type': 'application/json',
                 },
             })
 
-           
+
 
             setNotes(res.data);
-           
+
 
 
 
@@ -115,17 +116,17 @@ const handleSearch =(e) =>{
             console.error('Error fetching data:', error);
             throw error;
         }
-     }
+    }
 
-    
-  
-    useEffect(()=>{
+
+
+    useEffect(() => {
         Getnote();
-    },[isclicked])
+    }, [isclicked])
 
     const logOut = async () => {
         try {
-            const res = await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
+            const res = await axios.post(`${config.baseUrl}/api/auth/logout`, {}, { withCredentials: true });
             if (res.status !== 200) throw new Error("Logout failed");
             console.log("Logout successful");
             // Perform any additional actions like redirecting to login page here
@@ -137,134 +138,134 @@ const handleSearch =(e) =>{
 
 
 
-    
 
 
-    
+
+
 
 
 
     const handleAuthorclick = (e) => {
-       
+
         ssetSelectedOption(1)
-       
-       setSelectedAuthor(e);
+
+        setSelectedAuthor(e);
 
     }
-    function findMactchingNotes(e){
+    function findMactchingNotes(e) {
 
         const inputTags = e.tags;
 
-        return notes.filter( note =>{
-            return note.tags.some(tag=>inputTags.includes(tag));
+        return notes.filter(note => {
+            return note.tags.some(tag => inputTags.includes(tag));
         })
 
-        
+
     }
 
-    const handleSuggestedClick = (e) =>{
+    const handleSuggestedClick = (e) => {
         ssetSelectedOption(2);
         console.log(findMactchingNotes(e));
         setSelectedSubject(findMactchingNotes(e));
-        
 
-        
+
+
     }
 
-    const renderInExtraDiv = (selectedOption)=>{
+    const renderInExtraDiv = (selectedOption) => {
 
-        switch(selectedOption) {
+        switch (selectedOption) {
             case 0:
-                return(<>
-                 <div className='welcome-user rainbow-text'>Hello! {authUser.user.fullname},<span className=''>Welcome to NotesVault.</span></div>
-                 <FollowAuthor/>
+                return (<>
+                    <div className='welcome-user rainbow-text'>Hello! {authUser.user.fullname},<span className=''>Welcome to NotesVault.</span></div>
+                    <FollowAuthor />
                 </>
-                   
-                    
+
+
                 )
             case 1:
-                return(
+                return (
                     <Author author={selectedAuthor} />
                 )
             case 2:
                 return (
                     <div>
-                      <div className="suggested">Suggested Notes</div>
-                      {selectedSubject && selectedSubject.length > 0 ? (
-                        selectedSubject.map((subject, index) => (
-                          <SuggestedNotes key={index} suggest={subject} />
-                        ))
-                      ) : (
-                        <div>No suggested notes available</div>
-                      )}
+                        <div className="suggested">Suggested Notes</div>
+                        {selectedSubject && selectedSubject.length > 0 ? (
+                            selectedSubject.map((subject, index) => (
+                                <SuggestedNotes key={index} suggest={subject} />
+                            ))
+                        ) : (
+                            <div>No suggested notes available</div>
+                        )}
                     </div>
-                  );
-            
+                );
+
         }
 
 
-    } 
+    }
 
-    const renderPostContent = (selectedContent) =>{
-        
+    const renderPostContent = (selectedContent) => {
 
-        switch(selectedContent){
+
+        switch (selectedContent) {
 
             case 0:
-                return(
-                <>
-                <div className="post-notes" onClick={()=>{
-                    setSelectedContent(1);
-                }}>
+                return (
+                    <>
+                        <div className="post-notes" onClick={() => {
+                            setSelectedContent(1);
+                        }}>
 
-                       Upload Notes  &nbsp; <IoCloudUploadOutline className='post-icon'/>
+                            Upload Notes  &nbsp; <IoCloudUploadOutline className='post-icon' />
 
-                </div>
-                 {(
-                  displayedNotes.map((notes,index)=>(
-                     <Post ref = {index === 0? firstPostref:null} key={index} note={notes} auhorDescription={handleAuthorclick} suggestedNotes={handleSuggestedClick} setIsclicked={setIsclicked} />
-                       ))
-                    )}
+                        </div>
+                        {(
+                            displayedNotes.map((notes, index) => (
+                                <Post ref={index === 0 ? firstPostref : null} key={index} note={notes} auhorDescription={handleAuthorclick} suggestedNotes={handleSuggestedClick} setIsclicked={setIsclicked} />
+                            ))
+                        )}
 
-                </>
-                    
+                    </>
+
 
                 )
             case 1:
-                return(
-                <UploadNotes/>
+                return (
+                    <UploadNotes />
                 )
             case 2:
-                return(
+                return (
                     <>
-                      <div className="post-notes cursor-none" >
+                        <div className="post-notes cursor-none" >
 
-                       Uploaded Notes  
+                            Uploaded Notes
 
-                </div>
-                    {(
-                         myNotes.map((notes,index)=>(
-                            <Post key={index} note={notes} auhorDescription={handleAuthorclick} suggestedNotes={handleSuggestedClick} setIsclicked={setIsclicked} />
-                              ))
-                    )}
+                        </div>
+                        {(
+                            myNotes.map((notes, index) => (
+                                <Post key={index} note={notes} auhorDescription={handleAuthorclick} suggestedNotes={handleSuggestedClick} setIsclicked={setIsclicked} />
+                            ))
+                        )}
                     </>
                 )
             case 3:
-                return(
-                    <ContactUs/>
+                return (
+                    <ContactUs />
                 )
             case 4:
-                return(
-                    <AboutUs/>
+                return (
+                    <AboutUs />
                 )
             case 5:
                 return (
-                    <HelpFAQ/>
+                    <HelpFAQ />
                 )
         }
     }
-   
-      
+
+
     return (
         <div className='mainDB-container'>
 
@@ -274,13 +275,13 @@ const handleSearch =(e) =>{
                 </div>
                 <div className="search-container">
 
-                    <div className="search-input"><div className='search-btn-1'><IoSearchSharp/></div><input type="text" name="" id="" placeholder='search' spellCheck="false" value={searchTerms} onChange={handleSearch} /></div>
+                    <div className="search-input"><div className='search-btn-1'><IoSearchSharp /></div><input type="text" name="" id="" placeholder='search' spellCheck="false" value={searchTerms} onChange={handleSearch} /></div>
 
                 </div>
                 <div className="account-container">
-                   <div className='profile-img'> <img src={authUser.user.profileImg} alt="" onClick={()=>{
-                    navigate('/profile');
-                   }}/></div>
+                    <div className='profile-img'> <img src={authUser.user.profileImg} alt="" onClick={() => {
+                        navigate('/profile');
+                    }} /></div>
                 </div>
 
             </div>
@@ -288,44 +289,44 @@ const handleSearch =(e) =>{
                 <div className="menu-container ">
                     <div className="inner-menu">
                         <ul>
-                            <li onClick={()=>{
+                            <li onClick={() => {
                                 setSelectedContent(0);
                                 scrollToTop();
-                            }}><CiHome/>Home</li>
-                            <li> <SiBookstack/>Browse Notes</li>
-                            <li onClick={()=>{
+                            }}><CiHome />Home</li>
+                            <li> <SiBookstack />Browse Notes</li>
+                            <li onClick={() => {
                                 setSelectedContent(2)
                                 scrollToTop
-                            }}><LiaBookSolid/>My Notes</li>
-                            <li><BsSave/>Favorites/Saved Notes</li>
+                            }}><LiaBookSolid />My Notes</li>
+                            <li><BsSave />Favorites/Saved Notes</li>
                             <li
-                             onClick={()=>{
-                                setSelectedContent(5)
-                                scrollToTop();
-                            }}
-                            ><IoMdHelpCircle/>Help/FAQ</li>
-                            <li onClick={()=>{
+                                onClick={() => {
+                                    setSelectedContent(5)
+                                    scrollToTop();
+                                }}
+                            ><IoMdHelpCircle />Help/FAQ</li>
+                            <li onClick={() => {
                                 setSelectedContent(3)
                                 scrollToTop();
                             }}
-                            ><LuContact/>Contact Us</li>
-                            <li  onClick={()=>{
+                            ><LuContact />Contact Us</li>
+                            <li onClick={() => {
                                 setSelectedContent(4)
                                 scrollToTop();
-                            }}><FcAbout/>About Us</li>
+                            }}><FcAbout />About Us</li>
 
-                            
+
 
                         </ul>
-                        <div className='log-out'><button onClick={logOut}><IoIosLogOut className='log-out-logo'/>Log Out</button></div>
+                        <div className='log-out'><button onClick={logOut}><IoIosLogOut className='log-out-logo' />Log Out</button></div>
                     </div>
 
-                    
+
 
 
                 </div>
                 <div className="post-container">
-                   
+
                     {
                         renderPostContent(selectedContent)
                     }
@@ -334,18 +335,18 @@ const handleSearch =(e) =>{
                 </div>
                 <div className="extra-container">
                     <div className="inner-extra">
-                  {
-                    renderInExtraDiv(selectedOption)
-                  }
+                        {
+                            renderInExtraDiv(selectedOption)
+                        }
                     </div>
-                    
+
                 </div>
             </div>
 
 
 
 
-            
+
 
         </div>
     )

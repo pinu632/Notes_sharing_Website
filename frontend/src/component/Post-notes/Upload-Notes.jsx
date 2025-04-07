@@ -2,6 +2,7 @@ import { useState } from "react"
 import courseSubjects from "../../sampledata/sampledata.jsx";
 import { useQuery } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
+import config from "../../../config.js";
 import './UploadN.css'
 
 
@@ -31,7 +32,7 @@ export const UploadNotes = ()=>{
     const { mutate, isError, isPending, error } = useMutation({
         mutationFn: async () => {
             try {
-                const res = await fetch("http://localhost:8000/api/post/uploadNotes", {
+                const res = await fetch(`${config.baseUrl}/api/post/uploadNotes`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

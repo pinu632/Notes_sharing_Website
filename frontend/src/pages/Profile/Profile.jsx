@@ -3,6 +3,7 @@ import './Profile.css'; // Create and style this CSS file as per your design
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios'; // Assuming you're using react-query for fetching user data
 import { MdDeleteOutline } from "react-icons/md";
+import config from '../../../config';
 
 
 
@@ -20,7 +21,7 @@ export function Profile() {
     useEffect(() => {
         const fetchNotes = async () => {
           try {
-            const response = await axios.get('http://localhost:8000/api/user/uploadedNotes',{
+            const response = await axios.get(`${config.baseUrl}/api/user/uploadedNotes`,{
                 withCredentials: true, // Ensures credentials like cookies are sent
                 headers: {
                     'Content-Type': 'application/json',

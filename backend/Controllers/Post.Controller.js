@@ -38,7 +38,7 @@ export const UploadNotes = async (req,res) =>{
         const response = await cloudinary.uploader.upload(DocUrl, {
           folder: "Notes_file",  // Organize in a folder in Cloudinary
           allowed_formats: ["pdf", "doc", "docx"],
-          chunk_size:1000,
+          chunk_size:6000000,
            // Optional: Resize the image
         });
 
@@ -47,6 +47,7 @@ export const UploadNotes = async (req,res) =>{
         }
   
         DocUrl = response.secure_url;  // Get the URL of the uploaded image
+        console.log(DocUrl);
       }
 
       const post = new Post({
