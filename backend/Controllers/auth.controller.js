@@ -1,6 +1,6 @@
 import express from "express";
 import User from "../Models/user.model.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { GenerateTokenandSetCookies } from "../util/jwtCookies.js";
 import bodyparser from 'body-parser';
 
