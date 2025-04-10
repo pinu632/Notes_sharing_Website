@@ -1,11 +1,16 @@
 import express from 'express';
 import { ConnectMongoDB } from './ConnectDB/ConnectDB.js';
 import cors from 'cors';
-import dotenv from 'dotenv';
+
 import {v2 as cloudinary} from 'cloudinary';
 import cookieparser from 'cookie-parser';
 import Post from './Models/post.model.js';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config({
+  path:'./.env'
+})
 
 
 
@@ -19,11 +24,13 @@ app.use(express.json({limit:"100mb"})); //parse the req.body
 app.use(express.urlencoded({extended:true}));
 
 cloudinary.config({
-  cloud_name:"dxgcq5wuz",
-  api_key:177518487565398 ,
-  api_secret:"ZLcFwu0QGZsbsRzz-jkC85cRr24",
+  cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+  api_key:process.env.CLOUDINARY_API_KEY ,
+  api_secret:process.env.CLOUDINARY_API_SECRET,
   
 })
+
+
 
 
 app.use(cors({

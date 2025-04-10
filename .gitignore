@@ -1,0 +1,11 @@
+# Ignore the actual env file
+.env
+
+# Ignore all other env variations (optional but recommended)
+.env.*
+
+# But keep the example file
+!.env.example
+# Node modules
+node_modules/
+
