@@ -16,5 +16,8 @@
     "react-query": "^3.39.3",
     "socket.io": "^4.8.0"
   },
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "postinstall": "npm rebuild bcrypt --build-from-source"
+  }
 }
