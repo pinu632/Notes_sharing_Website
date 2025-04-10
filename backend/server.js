@@ -66,7 +66,7 @@ let io = new Server(server);
 
  io = new Server(server, {
   cors: {
-    origin: 'https://67f8100038976f7808bdf330--euphonious-naiad-7f184c.netlify.app/', // Allow the frontend to connect
+    origin: 'https://euphonious-naiad-7f184c.netlify.app', // Allow the frontend to connect
     methods: ["GET", "POST"],
     credentials: true,
   },
