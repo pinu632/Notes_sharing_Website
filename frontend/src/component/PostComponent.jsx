@@ -10,7 +10,8 @@ import io, { Socket } from 'socket.io-client';
 import { set } from 'mongoose';
 
 
-const socket = io('http://localhost:8000');
+
+const socket = io(`${config.baseUrl}`);
 
 export const Post = ({ ref,note, auhorDescription, suggestedNotes,setIsclicked }) => {
     const { data: authUser } = useQuery({ queryKey: ['authUser'] });

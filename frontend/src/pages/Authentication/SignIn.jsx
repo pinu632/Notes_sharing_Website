@@ -29,6 +29,7 @@ export function LogIn({onToggle}){
 				});
 
                 const data = await res.json();
+                console.log(res.cookies)
                 if (data.error) throw new Error(data.error);
 	
 				if (res.ok){
