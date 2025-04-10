@@ -34,7 +34,7 @@ cloudinary.config({
 
 
 app.use(cors({
-    origin: 'http://localhost:5173',  // Only allow this origin
+    origin: 'https://euphonious-naiad-7f184c.netlify.app',  // Only allow this origin
     credentials: true,  // Allow cookies to be sent
   }));
   
