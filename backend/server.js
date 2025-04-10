@@ -7,10 +7,15 @@ import cookieparser from 'cookie-parser';
 import Post from './Models/post.model.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config({
   path:'./.env'
 })
+
+
+
+// Serve static files
 
 
 
@@ -50,6 +55,13 @@ app.use('/api/auth',authRoute);
 app.use('/api/profile/',profileCompletionRoute)
 app.use('/api/post/',PostRoute);
 app.use('/api/user',userRoute)
+
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+
+// Catch-all route for SPA
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
 
 ConnectMongoDB();
 
