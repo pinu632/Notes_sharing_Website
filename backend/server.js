@@ -8,12 +8,16 @@ import Post from './Models/post.model.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
 
 dotenv.config({
   path:'./.env'
 })
 
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Serve static files
 
@@ -55,6 +59,8 @@ app.use('/api/auth',authRoute);
 app.use('/api/profile/',profileCompletionRoute)
 app.use('/api/post/',PostRoute);
 app.use('/api/user',userRoute)
+
+
 
 app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
